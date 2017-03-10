@@ -1,15 +1,7 @@
-FROM node:4
-
-MAINTAINER Aleksandr Popov  <mogadanez@gmail.com>
-
-# Create sqsd directory
-WORKDIR /
-RUN mkdir /sqsd
-
-# Copy sqsd source including
-COPY ./ /sqsd
-
-# Run sqsd
+FROM node:4.8
+#RUN npm install sqsd -g
+mkdir /sqsd
+COPY . /sqsd
 WORKDIR /sqsd
-CMD ["node", "run-cli.js"]
-
+RUN npm install
+ENTRYPOINT ["node", "cli.js"]
